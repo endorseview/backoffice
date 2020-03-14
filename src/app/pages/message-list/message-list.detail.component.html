@@ -1,0 +1,76 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+<ngx-spinner [bdColor]="spinnerConfig.bdColor"  [size]="spinnerConfig.size" [color]="spinnerConfig.color" [type]="spinnerConfig.type"></ngx-spinner>
+<div id="data" class="page-layout carded fullwidth inner-scroll">
+  <div class="center">
+    <div class="form-wrapper">
+      <form #providerForm="ngForm" (submit)="saveOrCreate(providerForm.valid)">
+        <h2 class="form-title">{{'form.title.message-list' | translate}}</h2>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'form.label.title' | translate}}</mat-label>
+            <input #inputTitle matInput name="title" [(ngModel)]="item.title">
+            <!-- <mat-error *ngIf="name.hasError('name') && !name.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="name.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <div></div>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'form.label.message' | translate}}</mat-label>
+            <input #inputMessage matInput name="message" [(ngModel)]="item.message">
+            <!-- <mat-error *ngIf="name.hasError('name') && !name.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="name.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="content pt10" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="49">
+            
+            <mat-form-field appearance="outline">
+              <mat-label>{{'form.label.code' | translate}}</mat-label>
+              <input #inputCode matInput name="code" [(ngModel)]="item.code">
+            </mat-form-field>
+          </div>
+          <div fxFlex="49">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'form.label.status' | translate}}</mat-label>
+              <mat-select [(value)]="item.status">
+                <mat-option *ngFor="let status of statusList" [value]="status.value">
+                  {{status.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="example-button-row">
+          
+          <button class="mr-4" mat-raised-button color="accent" type="submit">Save</button>
+          <button mat-raised-button color="primary" (click)="homePage()">Cancel</button>
+        </div>
+        <!-- <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+          <div class="m-form__actions m-form__actions--solid">
+            <div class="row">
+              <div class="col-lg-5">
+                <button class="btn btn-success" type="submit">
+                  {{'actions.save' | translate}}
+                </button>
+                <button class="btn btn-secondary" (click)="homePage()">
+                  {{'actions.cancel' | translate}}
+                </button>
+              </div>
+              <div class="col-lg-7"></div>
+            </div>
+          </div>
+        </div> -->
+      </form>
+      
+    </div>
+  </div>
+</div>

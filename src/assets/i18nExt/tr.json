@@ -1,0 +1,62 @@
+{
+	"SAMPLE": {
+		"HELLO": ""
+	},
+	"button": {
+		"remove": ""
+	},
+	"err": {
+		"401description": "",
+		"401title": "",
+		"404description": "",
+		"500description": "",
+		"500title": "",
+		"goBackDashboard": ""
+	},
+	"label": {
+		"database": "",
+		"hostname": "",
+		"searchCampaign": "",
+		"searchConfiguration": "",
+		"searchDatabaseServer": "",
+		"searchPromotion": "",
+		"searchStaff": "",
+		"searchTariff": "",
+		"searchTenant": "",
+		"status": ""
+	},
+	"message": {
+		"deleteConfirm": "",
+		"deleted": "",
+		"success": ""
+	},
+	"nav": {
+		"logout": "",
+		"myProfile": ""
+	},
+	"settings": "",
+	"title": {
+		"campaignDetail": "",
+		"campaigns": "",
+		"configurationDetail": "",
+		"configurations": "",
+		"database-serverDetail": "",
+		"database-servers": "",
+		"editTenant": "",
+		"newCampaign": "",
+		"newConfiguration": "",
+		"newDatabaseServer": "",
+		"newPromotion": "",
+		"newStaff": "",
+		"newTariff": "",
+		"newTenant": "",
+		"promotionDetail": "",
+		"promotions": "",
+		"staffDetail": "",
+		"staffs": "",
+		"tariffDetail": "",
+		"tariffs": "",
+		"tenantDetail": "",
+		"tenants": ""
+	}
+}

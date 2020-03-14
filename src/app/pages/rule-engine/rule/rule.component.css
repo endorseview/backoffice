@@ -1,0 +1,12 @@
+.ui-dropdown {
+  min-width: 5em !important;
+}
+table > thead > tr > th > input {
+  height: 30px !important;
+}
+div.editor-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  height: 100px;
+}

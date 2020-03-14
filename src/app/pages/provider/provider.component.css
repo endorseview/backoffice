@@ -1,0 +1,6 @@
+.ui-dropdown {
+  min-width: 5em !important;
+}
+table > thead > tr > th > input {
+  height: 30px !important;
+}

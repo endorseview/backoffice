@@ -1,0 +1,17 @@
+<div id="error-500" fxLayout="column" fxLayoutAlign="center center">
+
+    <div class="content" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="error-code">500</div>
+
+        <div class="message">{{ 'err.500title' | translate }}</div>
+
+        <div class="sub-message">
+            {{ 'err.500description' | translate }}
+        </div>
+
+        <a class="back-link" [routerLink]="'/apps/dashboards/project'">{{ 'err.goBackDashboard' | translate }}</a>
+
+    </div>
+
+</div>

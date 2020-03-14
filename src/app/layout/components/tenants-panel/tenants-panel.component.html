@@ -1,0 +1,31 @@
+<div fxLayout="column" fxFlex fusePerfectScrollbar>
+
+    <div class="header">
+        <span class="title">Tenant Selection</span>
+
+        <button mat-icon-button class="close-button" (click)="toggleSidebarOpen('tenantsPanel')">
+            <mat-icon>close</mat-icon>
+        </button>
+
+    </div>
+
+    <form class="example-form" [formGroup]='usersForm'>
+        <!-- <mat-form-field class="example-full-width">
+            <input matInput placeholder="Choose a user" [matAutocomplete]="auto" formControlName='userInput'>
+        </mat-form-field> -->
+
+        <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+            (optionSelected)='selectTenant($event.option.value)'>
+            <mat-option *ngIf="isLoading" class="is-loading">
+                <mat-spinner diameter="25"></mat-spinner>
+            </mat-option>
+            <ng-container *ngIf="!isLoading">
+                <mat-option *ngFor="let user of filteredUsers" [value]="user">
+                    {{ user.company }}
+                </mat-option>
+            </ng-container>
+        </mat-autocomplete> -->
+    </form>
+
+
+</div>

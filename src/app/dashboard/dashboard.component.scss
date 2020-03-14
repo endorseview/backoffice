@@ -1,0 +1,125 @@
+@import "src/@fuse/scss/fuse";
+
+#dashboard-analytics {
+
+    .main-widget {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content {
+        display: flex;
+        flex: 1 1 auto;
+        padding: 32px;
+        min-width: 0;
+
+        @include media-breakpoint('lt-lg') {
+            flex-direction: column;
+        }
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            min-width: 0;
+
+            .widget {
+                flex: 1 1 auto;
+                min-width: 0;
+            }
+        }
+
+        .right {
+            display: flex;
+            flex: 0 0 auto;
+            width: 320px;
+            min-width: 320px;
+            max-width: 320px;
+
+            @include media-breakpoint('lt-lg') {
+                flex: 1 0 100%;
+                margin-top: 32px;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+            }
+
+            .fuse-card {
+
+                @include media-breakpoint('lt-lg') {
+                    width: 100%;
+                    min-width: 0;
+                    max-width: none;
+                }
+            }
+        }
+    }
+
+}
+
+
+.dashboards-content {
+    flex-direction: column; 
+    box-sizing: border-box; 
+    display: flex; 
+    place-content: center flex-start; 
+    align-items: center; 
+    flex: 1 1 0%;
+
+    .head {
+        text-align: center;
+        padding: 20px 0;
+        .title {
+
+        }
+        .desc {
+
+        }
+    }
+
+    .info {
+        padding: 10px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+        text-align: center;
+        .header-boards-button {
+            text-align: center;
+        }
+        .logo {
+            background: url("../../assets/images/logos/logo.png");
+            width: 200px;
+            height: 46px;
+            background-size: 100%;
+            position: relative;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            margin-bottom: 20px;
+        }
+        
+    }
+
+    .board-list {
+        &-item {
+            float: left;
+            text-align: center;
+            min-width: 210px;
+            min-height: 210px;
+            width: 210px;
+            height: 210px;
+            padding: 60px 0;
+            margin: 16px;
+            border-radius: 8px;
+            background: rgba(0,0,0,.12);
+            -webkit-transition: box-shadow 150ms ease-in;
+            transition: box-shadow 150ms ease-in;
+            cursor: pointer;
+            color: #fff;
+            &:hover {
+                box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+            }
+        }
+    }
+
+}
+

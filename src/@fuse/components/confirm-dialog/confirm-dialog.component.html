@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>{{title || ('actions.confirm' | translate)}}</h2>
+<mat-dialog-content class="mat-typography">
+    <span>{{confirmMessage || ('question.delete' | translate)}}</span>
+    <mat-list role="list" *ngIf="list?.length">
+        <mat-list-item *ngFor="let item of list" role="listitem">{{item.name || item.title}}</mat-list-item>
+    </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions class="pt-24" align="start">
+  <button mat-button mat-dialog-close>{{'actions.cancel' | translate}}</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>{{'actions.yes' | translate}}</button>
+</mat-dialog-actions>

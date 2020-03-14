@@ -1,0 +1,131 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+<ngx-spinner [bdColor]="spinnerConfig.bdColor"  [size]="spinnerConfig.size" [color]="spinnerConfig.color" [type]="spinnerConfig.type"></ngx-spinner>
+<div class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- CONTENT HEADER -->
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="m-0">{{'title.rule' | translate}}</h2>
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar px-24 py-8">
+                <span>{{ 'table.title.rule' | translate}}</span>
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content p-24" fusePerfectScrollbar>
+
+                <p-table [value]="list"
+                        [lazy]="true" [columns]="cols"
+                        (onLazyLoad)="findAll($event)"
+                        [sortField]="'id'"
+                        [sortOrder]="1"
+                        scrollable="true" [(selection)]="selectedItems"
+                        [rows]="pageable.size" [paginator]="true"
+                        paginatorPosition="bottom" [rowsPerPageOptions]="[5,10,20,50,100,250,500]"
+                        scrollHeight="500px" [dataKey]="'id'"
+                        [totalRecords]="totalRecords">
+                    <ng-template *ngIf="false" pTemplate="caption">
+                        
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th style="width: 3em" >
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                            <th *ngFor="let col of columns" [ngSwitch]="col.field" [style.width]="col.width || ''" >
+                                {{col.header | translate}}
+                            </th>
+                            <th style="width: 120px;">
+                                <button mat-icon-button color="accent" 
+                                        type="button" (click)="findAll(null)"
+                                        matTooltip="{{'actions.search' | translate}}">
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn" type="button" 
+                                        (click)="clearSearch()"
+                                        matTooltip="{{'actions.clear-search' | translate}}">
+                                    <mat-icon>clear</mat-icon>
+                                </button>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="width: 3em" >
+                                
+                            </th>
+                            <th *ngFor="let col of columns" [ngSwitch]="col.field" [style.width]="col.width || ''" >
+                                
+                                <p-dropdown [options]="statuses"
+                                            [placeholder]="'actions.select' | translate"
+                                            *ngSwitchCase="'status'"
+                                            [style]="{'width':'120px'}"
+                                            [(ngModel)]="search[col.field]"
+                                            (onChange)="findAll(null)"
+                                            [appendTo]="'body'"></p-dropdown>
+                                <span *ngSwitchCase="'id'"></span>
+                                <input *ngSwitchCase="'name'" type="text" pInput [(ngModel)]="search[col.field]" (keydown.enter)="findAll(null)" style="width: 5em; height: 30px !important;">
+                                <!-- <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon> -->
+                            </th>
+                            <th style="width: 120px;">
+                                <button mat-icon-button color="primary" 
+                                        type="button" (click)="add()"
+                                        matTooltip="{{'actions.add' | translate}}">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                                <button mat-icon-button color="warn" type="button" 
+                                        [disabled]="!selectedItems?.length" (click)="openDialog()"
+                                        matTooltip="{{'actions.selected-remove' | translate}}">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr [pSelectableRow]="rowData">
+                            <td style="width: 3em">
+                                <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                            </td>
+                            <td *ngFor="let col of columns" [style.width]="col.width || ''">
+                                {{rowData[col.field]}}
+                            </td>
+                            <td style="width: 120px;">
+                                <button class="mat-icon-button" type="button" (click)="edit(rowData)">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button class="mat-icon-button" type="button" (click)="remove(rowData)">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage" let-cols>
+                        <tr>
+                            <td [attr.colspan]="cols.length">
+                                {{ 'table.label.emptyMessage' | translate}}
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

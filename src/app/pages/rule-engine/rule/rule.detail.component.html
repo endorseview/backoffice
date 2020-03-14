@@ -1,0 +1,93 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+<ngx-spinner [bdColor]="spinnerConfig.bdColor"  [size]="spinnerConfig.size" [color]="spinnerConfig.color" [type]="spinnerConfig.type"></ngx-spinner>
+<div id="data" class="page-layout carded fullwidth inner-scroll">
+  <div class="center" fusePerfectScrollbar>
+    <div class="form-wrapper">
+      <form #ruleForm="ngForm" (submit)="saveOrCreate(ruleForm.valid)">
+        <h2 class="form-title">{{'form.title.rule' | translate}}</h2>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'form.label.name' | translate}}</mat-label>
+            <input #name="ngModel" matInput name="name" [(ngModel)]="item.name" required>
+            <mat-error *ngIf="!name.valid">
+              Name is <strong>required</strong>
+            </mat-error>
+            <!-- <mat-error *ngIf="name.hasError('name') && !name.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+             -->
+          </mat-form-field>
+          <div></div>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline">
+            <mat-label>{{'form.label.definition' | translate}}</mat-label>
+            <input #definition="ngModel" matInput name="definition" [(ngModel)]="item.definition" required>
+            <mat-error *ngIf="!definition.valid">
+              Definition is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="content pt10" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column" fxFlexFill>
+          <div fxFlex="49">
+            
+            <mat-form-field appearance="outline">
+              <mat-label>{{'form.label.status' | translate}}</mat-label>
+              <mat-select [(value)]="item.status">
+                <mat-option *ngFor="let status of statusList" [value]="status.value">
+                  {{status.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxFlex="49">
+            
+          </div>
+        </div>
+        <div class="content my-8" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column" fxFlexFill>
+          <mat-label fxFlex="10">{{'form.label.function' | translate}}</mat-label>
+          <div class="editor-container" fxFlex="85">
+            <ngx-monaco-editor #function="ngModel" style="height: 100%" [options]="editorOptions" name="function" [(ngModel)]="item.function" aria-required="#inputFunction"></ngx-monaco-editor>
+          </div>
+          <mat-error *ngIf="!function.valid">
+            Function is <strong>required</strong>
+          </mat-error>
+        </div>
+        <div class="content my-16" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column" fxFlexFill>
+          <mat-label fxFlex="10">{{'form.label.rawFunction' | translate}}</mat-label>
+          <div class="editor-container" fxFlex="85">
+            <ngx-monaco-editor #inputRawFunction style="height: 100%" [options]="editorOptions" name="rawFunction" [(ngModel)]="item.rawFunction" required></ngx-monaco-editor>
+          </div>
+        </div>
+        <div class="content my-8" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column" fxFlexFill>
+          <mat-label fxFlex="10">{{'form.label.message' | translate}}</mat-label>
+          <div class="editor-container" fxFlex="85">
+            <ngx-monaco-editor #inputMessage style="height: 100%" [options]="editorOptions" name="message" [(ngModel)]="item.message" required></ngx-monaco-editor>
+          </div>
+        </div>
+        
+        <div class="example-button-row">
+          
+          <button class="mr-4" mat-raised-button color="accent" type="submit">Save</button>
+          <button mat-raised-button color="primary" type="button" (click)="homePage()">Cancel</button>
+        </div>
+        <!-- <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+          <div class="m-form__actions m-form__actions--solid">
+            <div class="row">
+              <div class="col-lg-5">
+                <button class="btn btn-success" type="submit">
+                  {{'actions.save' | translate}}
+                </button>
+                <button class="btn btn-secondary" (click)="homePage()">
+                  {{'actions.cancel' | translate}}
+                </button>
+              </div>
+              <div class="col-lg-7"></div>
+            </div>
+          </div>
+        </div> -->
+      </form>
+      
+    </div>
+  </div>
+</div>
